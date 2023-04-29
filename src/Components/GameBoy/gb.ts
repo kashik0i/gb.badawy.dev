@@ -70,6 +70,7 @@ export default class GB {
                 this.canvasContext.putImageData(imageData, 0, 0);
             });
             this.canvasContext.canvas.style.width="fit-content"
+            this.canvasContext.canvas.style.height="-webkit-fill-available"
             this.gameboy.run(); // Run the game
         }
 
