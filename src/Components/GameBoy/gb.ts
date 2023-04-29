@@ -69,8 +69,10 @@ export default class GB {
             this.gameboy.onFrameFinished(imageData => {
                 this.canvasContext.putImageData(imageData, 0, 0);
             });
-            this.canvasContext.canvas.style.width="fit-content"
-            this.canvasContext.canvas.style.height="-webkit-fill-available"
+            // this.canvasContext.canvas.style.width="fit-content"
+            this.canvasContext.canvas.style.width="660px"
+            // this.canvasContext.canvas.style.height="-webkit-fill-available"
+            this.canvasContext.canvas.style.height="312px"
             this.gameboy.run(); // Run the game
         }
 

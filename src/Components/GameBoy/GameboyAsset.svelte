@@ -338,8 +338,8 @@
                            ry="9.1661596"
                            y="122.01169"
                            x="-603.0611"
-                           height="276.78177"
-                           width="301.02545"
+                           height="300"
+                           width="352"
                            id="rect10161"
                            style="fill:#73d216;fill-opacity:1;stroke:none;background: transparent"
             >
