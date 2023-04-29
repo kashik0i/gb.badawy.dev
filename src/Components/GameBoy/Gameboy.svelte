@@ -34,7 +34,7 @@
     <input type="file" bind:this={fileInput} class="file-input mb-4"/>
     <GameBoySVG>
         <canvas bind:this={canvas} tabindex='1'
-                style="image-rendering: pixelated; background: yellowgreen;">
+                style="image-rendering: pixelated; background: transparent;">
             Your browser does not support the canvas element.
         </canvas>
     </GameBoySVG>
