@@ -12,7 +12,7 @@
     async function initGB() {
         gameboy = new GB(ctx);
         fileInput.addEventListener('change', (e) => gameboy.onFileChange(e, fileInput.files));
-        const request = await fetch("public/games/brickster.gbc");
+        const request = await fetch("/games/brickster.gbc");
         const brickster = await request.blob();
         console.log(brickster)
         await gameboy.loadGame(brickster);
