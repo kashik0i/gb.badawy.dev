@@ -61,19 +61,7 @@ export default class GB {
     async onFileChange(event, files) {
         console.log(files)
         if (files && files[0]) {
-            const rom = await this.fileToArrayBuffer(files[0]);
-            this.gameboy.loadGame(<ArrayBuffer>rom);
-
-            this.gameboy.apu.enableSound();
-
-            this.gameboy.onFrameFinished(imageData => {
-                this.canvasContext.putImageData(imageData, 0, 0);
-            });
-            // this.canvasContext.canvas.style.width="fit-content"
-            this.canvasContext.canvas.style.width="660px"
-            // this.canvasContext.canvas.style.height="-webkit-fill-available"
-            this.canvasContext.canvas.style.height="312px"
-            this.gameboy.run(); // Run the game
+            await this.loadGame(files[0])
         }
 
 
@@ -92,5 +80,21 @@ export default class GB {
 
             fileReader.readAsArrayBuffer(file);
         });
+    }
+
+    public async loadGame(gameFile) {
+        const rom = await this.fileToArrayBuffer(gameFile);
+        this.gameboy.loadGame(<ArrayBuffer>rom);
+
+        this.gameboy.apu.enableSound();
+
+        this.gameboy.onFrameFinished(imageData => {
+            this.canvasContext.putImageData(imageData, 0, 0);
+        });
+        // this.canvasContext.canvas.style.width="fit-content"
+        this.canvasContext.canvas.style.width = "661px"
+        // this.canvasContext.canvas.style.height="-webkit-fill-available"
+        this.canvasContext.canvas.style.height = "313px"
+        this.gameboy.run(); // Run the game
     }
 }

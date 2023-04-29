@@ -3,22 +3,25 @@
     import GB from "./gb";
     import {onMount} from "svelte";
 
-    let gameArea;
     let canvas: HTMLCanvasElement;
     let ctx: CanvasRenderingContext2D
-    let gameboy
+    let gameboy: GB;
     let fileInput: HTMLInputElement;
 
 
-    function initGB() {
+    async function initGB() {
         gameboy = new GB(ctx);
         fileInput.addEventListener('change', (e) => gameboy.onFileChange(e, fileInput.files));
+        const request = await fetch("public/games/brickster.gbc");
+        const brickster = await request.blob();
+        console.log(brickster)
+        await gameboy.loadGame(brickster);
     }
 
 
-    onMount(() => {
+    onMount(async () => {
         ctx = canvas.getContext("2d");
-        initGB();
+        await initGB();
         canvas.addEventListener("click", async () => {
             await canvas.requestPointerLock();
         });
